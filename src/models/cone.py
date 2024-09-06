@@ -2,12 +2,11 @@ import services.coneConnectService as coneConnect
 import models.circumference as circ
 
 class Cone:
-    def cone(raio, pc, p=1):
+    def cone(raio, h, pc, p=1):
         x = []
         y = []
         z = []
 
-        h = 3*raio  
         cont = 0
 
         while cont < h:

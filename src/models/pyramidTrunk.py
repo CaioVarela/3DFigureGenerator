@@ -1,4 +1,4 @@
-import models.square as square
+import models.circumference as circumference
 import services.trunkConnectService as trunkConnect
 import numpy as np
 
@@ -12,9 +12,9 @@ class PyramidTrunk:
         cont = 0
 
         while cont < h:
-            quad1 = square.Square.quadrado((h*lb - cont*lb + cont*ls)/h, [pc[0], pc[1], pc[2] + cont])
+            quad1 = circumference.Circumference.circunferencia((h*lb - cont*lb + cont*ls)/h, [pc[0], pc[1], pc[2] + cont])
             cont += p
-            quad2 = square.Square.quadrado((h*lb - cont*lb + cont*ls)/h, [pc[0], pc[1], pc[2] + cont])
+            quad2 = circumference.Circumference.circunferencia((h*lb - cont*lb + cont*ls)/h, [pc[0], pc[1], pc[2] + cont])
 
             if cont == p:
                 tronco = trunkConnect.TrunkConnectService.ligarTronco(quad1, quad2, pc=pc, down=1)

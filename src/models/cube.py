@@ -25,12 +25,6 @@ class Cube:
                 y += tronco[1]
                 z += tronco[2]
                 continue
-            if cont == h:
-                tronco = trunkConnect.TrunkConnectService.ligarTronco(quad1, quad2, pc=[pc[0], pc[1], pc[2] + h], up=1)
-                x += tronco[0]
-                y += tronco[1]
-                z += tronco[2]
-                continue
 
             tronco = cubeConnect.CubeConnectService.ligarCubo(quad1, quad2)
 
