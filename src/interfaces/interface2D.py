@@ -1,0 +1,1 @@
+###TODO:Implement interface for 2D figures.
