@@ -1,7 +1,9 @@
 import pandas as pd
+from models import box
+from services.transformations import translationService
 
-class CubeConnectService:
-    def ligarCubo(quad1, quad2, pc = [0, 0, 0], up = 0, down = 0):
+class BoxService:
+    def boxConnect(quad1, quad2, pc = [0, 0, 0], up = 0, down = 0):
         df1 = pd.DataFrame({"x": quad1[0], "y":quad1[1], "z":quad1[2]})
         df2 = pd.DataFrame({"x": quad2[0], "y":quad2[1], "z":quad2[2]})
 
@@ -53,3 +55,12 @@ class CubeConnectService:
 
     
         return troX, troY, troZ
+    
+    def add_box(points, isCentralized=True):
+        x, y, z = box.Box.box(2, [0, 0, 0], 1/5)
+
+        if (isCentralized == False):
+            points = translationService.TranslationService.translation(5, -5, 5, [x, y, z])
+            return points
+
+        return [x, y, z]

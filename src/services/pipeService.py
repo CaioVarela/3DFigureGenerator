@@ -1,7 +1,9 @@
 import pandas as pd
+from models import pipe
+from services.transformations import translationService
 
-class CircumferenceConnectService:
-    def ligarCirc(h, circ, raio, pc):
+class PipeService:
+    def pipeConnect(h, circ, raio, pc):
 
         df = pd.DataFrame({"x": circ[0], "y":circ[1], "z":circ[2]})
 
@@ -33,3 +35,12 @@ class CircumferenceConnectService:
             clZ.append(df['z'][i] + h)
     
         return clX, clY, clZ
+    
+    def add_pipe(points, isCentralized=True):
+            x, y, z = pipe.Pipe.pipe(2, [0, 0, 0], p=1/5)
+            
+            if (isCentralized == False):
+                points = translationService.TranslationService.translation(6, 4, 4, [x, y, z])
+                return points
+            else: 
+                return [x, y, z]

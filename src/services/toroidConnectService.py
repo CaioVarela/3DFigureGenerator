@@ -1,7 +1,7 @@
 import pandas as pd
 
 class ToroidConnectService:
-    def ligarToroide(circ1, circ2):
+    def connectToroid(circ1, circ2):
 
         df1 = pd.DataFrame({"x": circ1[0], "y":circ1[1], "z":circ1[2]})
         df2 = pd.DataFrame({"x": circ2[0], "y":circ2[1], "z":circ2[2]})

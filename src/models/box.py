@@ -1,10 +1,10 @@
 import models.square as square
-import services.trunkConnectService as trunkConnect
-import services.cubeConnectService as cubeConnect
+import services.coneTrunkService as coneTrunkService
+import services.boxService as boxService
 import numpy as np
 
-class Cube:
-    def cubo(l, pc, p=1):
+class Box:
+    def box(l, pc, p=1):
 
         x = []
         y = []
@@ -15,18 +15,18 @@ class Cube:
 
         while cont < h:
             
-            quad1 = square.Square.quadrado(l, [pc[0], pc[1], pc[2] + cont])
+            quad1 = square.Square.square(l, [pc[0], pc[1], pc[2] + cont])
             cont += p
-            quad2 = square.Square.quadrado(l, [pc[0], pc[1], pc[2] + cont])
+            quad2 = square.Square.square(l, [pc[0], pc[1], pc[2] + cont])
 
             if cont == p:
-                tronco = trunkConnect.TrunkConnectService.ligarTronco(quad1, quad2, pc=pc, down=1)
+                tronco = coneTrunkService.ConeTrunkService.connectConeTrunk(quad1, quad2, pc=pc, down=1)
                 x += tronco[0]
                 y += tronco[1]
                 z += tronco[2]
                 continue
 
-            tronco = cubeConnect.CubeConnectService.ligarCubo(quad1, quad2)
+            tronco = boxService.BoxService.boxConnect(quad1, quad2)
 
             x += tronco[0]
             y += tronco[1]
