@@ -13,11 +13,11 @@ class Sphere:
 
         while cont < raio:
             
-            circ1 = circ.Circumference.circunferencia(np.sqrt([2*cont*raio - cont*cont])[0], [pc[0], pc[1], pc[2] - raio + cont])
+            circ1 = circ.Circumference.circumference(np.sqrt([2*cont*raio - cont*cont])[0], [pc[0], pc[1], pc[2] - raio + cont])
             cont += p
-            circ2 = circ.Circumference.circunferencia(np.sqrt([2*cont*raio - cont*cont])[0], [pc[0], pc[1], pc[2] - raio + cont])
+            circ2 = circ.Circumference.circumference(np.sqrt([2*cont*raio - cont*cont])[0], [pc[0], pc[1], pc[2] - raio + cont])
 
-            esfera = sphereConnect.SphereConnectService.ligarEsfera(circ1, circ2)
+            esfera = sphereConnect.SphereConnectService.connectSphere(circ1, circ2)
             x += esfera[0]
             y += esfera[1]
             z += esfera[2]
@@ -28,11 +28,11 @@ class Sphere:
 
         while cont < raio:
             
-            circ1 = circ.Circumference.circunferencia(np.sqrt([raio*raio - cont*cont])[0], [pc[0], pc[1], pc[2] + cont])
+            circ1 = circ.Circumference.circumference(np.sqrt([raio*raio - cont*cont])[0], [pc[0], pc[1], pc[2] + cont])
             cont += p
-            circ2 = circ.Circumference.circunferencia(np.sqrt([raio*raio - cont*cont])[0], [pc[0], pc[1], pc[2] + cont])
+            circ2 = circ.Circumference.circumference(np.sqrt([raio*raio - cont*cont])[0], [pc[0], pc[1], pc[2] + cont])
 
-            esfera = sphereConnect.SphereConnectService.ligarEsfera(circ1, circ2)
+            esfera = sphereConnect.SphereConnectService.connectSphere(circ1, circ2)
             x += esfera[0]
             y += esfera[1]
             z += esfera[2]

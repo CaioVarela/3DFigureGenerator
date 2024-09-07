@@ -1,7 +1,9 @@
 import pandas as pd
+from models import coneTrunk
+from services.transformations import translationService
 
-class TrunkConnectService:
-    def ligarTronco(quad1, quad2, pc = [0, 0, 0], up = 0, down = 0):
+class ConeTrunkService:
+    def connectConeTrunk(quad1, quad2, pc = [0, 0, 0], up = 0, down = 0):
 
         df1 = pd.DataFrame({"x": quad1[0], "y":quad1[1], "z":quad1[2]})
         df2 = pd.DataFrame({"x": quad2[0], "y":quad2[1], "z":quad2[2]})
@@ -54,3 +56,12 @@ class TrunkConnectService:
 
     
         return troX, troY, troZ
+    
+    def add_coneTrunk(points, isCentralized=True):
+        x, y, z = coneTrunk.ConeTrunk.coneTrunk(5, 3, 2, [0, 0, 0], 1/5)
+
+        if (isCentralized == False):
+            points = translationService.TranslationService.translation(-5, -5, -10, [x, y, z])
+            return points
+        else: 
+            return [x, y, z]

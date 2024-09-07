@@ -1,7 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
 from services.plot3dImageService import Plot3dImageService
-from models import cube, pyramidTrunk, cone, cylinder
+from services.boxService import BoxService
+from services.coneService import ConeService
+from services.pipeService import PipeService
+from services.coneTrunkService import ConeTrunkService
 
 class Interface3D:
     def __init__(self, root):
@@ -27,36 +30,17 @@ class Interface3D:
         self.points = []
 
         if figure == "Caixa":
-            self.add_box()
+            self.points.append(BoxService.add_box(self.points))
         if figure == "Cone":
-            self.add_cone()
+            self.points.append(ConeService.add_cone(self.points))
         if figure == "Cano":
-            self.add_pipe()
+            self.points.append(PipeService.add_pipe(self.points))
         if figure == "Caneca":
-            self.add_cup()
+            print("Em andamento.")
         if figure == "Tronco de Cone":
-            self.add_coneTrunk()
+            self.points.append(ConeTrunkService.add_coneTrunk(self.points))
 
         self.plot_points()
-
-    def add_box(self):
-        x, y, z = cube.Cube.cubo(2, [0, 0, 0])
-        self.points.append([x, y, z])
-
-    def add_cone(self):
-        x, y, z = cone.Cone.cone(2, 3*2, [0, 0, 0])
-        self.points.append([x, y, z])
-
-    def add_pipe(self):
-        x, y, z = cylinder.Cylinder.cilindro(2, [0, 0, 0], p=1/5)
-        self.points.append([x, y, z])
-    
-    def add_cup(self):
-        print("mb de chapeuzim")
-        
-    def add_coneTrunk(self):
-        x, y, z = pyramidTrunk.PyramidTrunk.tronco(5, 3, 2, [0, 0, 0], 1/5)
-        self.points.append([x, y, z])
 
 
     def plot_points(self):
