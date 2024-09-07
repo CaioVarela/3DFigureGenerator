@@ -1,6 +1,9 @@
 import pandas as pd
+from models import cup
+from services.transformations import translationService
+import numpy as np
 
-class ToroidConnectService:
+class CupService:
     def connectToroid(circ1, circ2):
 
         df1 = pd.DataFrame({"x": circ1[0], "y":circ1[1], "z":circ1[2]})
@@ -29,3 +32,12 @@ class ToroidConnectService:
             esfZ.append(df2['z'][i])
     
         return esfX, esfY, esfZ
+    
+    def add_cup(points, isCentralized=True):
+            x, y, z = cup.Cup.cup(0.5, np.pi/36, [1, 0, 0], [-4, 1, 4])
+            
+            if (isCentralized == False):
+                points = translationService.TranslationService.translation(-5, -5, -3, [x, y, z])
+                return points
+            else: 
+                return [x, y, z]

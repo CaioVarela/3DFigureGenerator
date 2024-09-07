@@ -3,7 +3,7 @@ from models import pipe
 from services.transformations import translationService
 
 class PipeService:
-    def pipeConnect(h, circ, raio, pc):
+    def pipeConnect(h, circ, pc, hasBottom=False):
 
         df = pd.DataFrame({"x": circ[0], "y":circ[1], "z":circ[2]})
 
@@ -15,6 +15,15 @@ class PipeService:
             clX.append(df['x'][i])
             clY.append(df['y'][i])
             clZ.append(df['z'][i])
+
+            if h == 0 and hasBottom:
+                clX.append(pc[0])
+                clY.append(pc[1])
+                clZ.append(pc[2])
+
+                clX.append(df['x'][i])
+                clY.append(df['y'][i])
+                clZ.append(df['z'][i])
 
         for i in range(len(df)):
             clX.append(df['x'][i])
