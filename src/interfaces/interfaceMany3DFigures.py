@@ -4,6 +4,7 @@ from services.boxService import BoxService
 from services.coneService import ConeService
 from services.pipeService import PipeService
 from services.coneTrunkService import ConeTrunkService
+from services.cupService import CupService
 
 class InterfaceMany3DFigures:
     def __init__(self, root):
@@ -20,8 +21,7 @@ class InterfaceMany3DFigures:
         self.points.append(BoxService.add_box(self.points))
         self.points.append(ConeService.add_cone(self.points))
         self.points.append(PipeService.add_pipe(self.points))
-        # TODO: Após criar service do teu caneco, adiciona aqui
-        # self.points.append(CupService.add_cup(self.points))
+        self.points.append(CupService.add_cup(self.points))
         self.points.append(ConeTrunkService.add_coneTrunk(self.points))
 
         self.plot_points()
@@ -31,8 +31,7 @@ class InterfaceMany3DFigures:
         self.points.append(BoxService.add_box(self.points, False))
         self.points.append(ConeService.add_cone(self.points, False))
         self.points.append(PipeService.add_pipe(self.points, False))
-        # TODO: Após criar service do teu caneco, adiciona aqui
-        # self.points.append(CupService.add_cup(self.points, False))
+        self.points.append(CupService.add_cup(self.points, False))
         self.points.append(ConeTrunkService.add_coneTrunk(self.points, False))
 
         self.plot_points()

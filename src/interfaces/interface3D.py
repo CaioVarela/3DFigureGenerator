@@ -5,6 +5,7 @@ from services.boxService import BoxService
 from services.coneService import ConeService
 from services.pipeService import PipeService
 from services.coneTrunkService import ConeTrunkService
+from services.cupService import CupService
 
 class Interface3D:
     def __init__(self, root):
@@ -36,7 +37,7 @@ class Interface3D:
         if figure == "Cano":
             self.points.append(PipeService.add_pipe(self.points))
         if figure == "Caneca":
-            print("Em andamento.")
+            self.points.append(CupService.add_cup(self.points))
         if figure == "Tronco de Cone":
             self.points.append(ConeTrunkService.add_coneTrunk(self.points))
 

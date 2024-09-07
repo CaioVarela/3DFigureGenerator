@@ -3,7 +3,7 @@ import services.pipeService as pipeService
 import models.circumference as circumference
 
 class Pipe:
-    def pipe(raio, pc, p=1):
+    def pipe(raio, pc, p=1, hasBottom=False):
         x = []
         y = []
         z = []
@@ -15,7 +15,7 @@ class Pipe:
 
         while cont <= h:
             cont = np.round(cont, 2)
-            cil = pipeService.PipeService.pipeConnect(cont, circ, raio, pc)
+            cil = pipeService.PipeService.pipeConnect(cont, circ, pc, hasBottom)
             x += cil[0]
             y += cil[1]
             z += cil[2]
