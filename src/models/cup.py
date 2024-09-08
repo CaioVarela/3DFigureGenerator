@@ -1,5 +1,6 @@
 import models.circumference as circumference
 import models.pipe as pipe
+from services.transformations import scaleService
 import services.transformations.rotationService as rotateService
 import services.transformations.translationService as translateService
 import services.cupService as cupService
@@ -32,6 +33,9 @@ class Cup:
 
         x, y, z = rotateService.RotationService.toro_rotation(190, x, y, z)
         x1, y1, z1 = pipe.Pipe.pipe(1.5, [1.2, 1, -1.5], p=1/5, hasBottom=True)
+        x1, y1, z1 = np.array(x1), np.array(y1), np.array(z1)
+        pontos_pipe = np.vstack([x1, y1, z1, np.ones(len(x1))])
+        x1, y1, z1, _ = scaleService.ScaleService.scale(1, 1, 1.3, pontos_pipe)
 
         xPoints = np.concatenate((x, x1))
         yPoints = np.concatenate((y, y1))
@@ -39,4 +43,7 @@ class Cup:
 
         points = xPoints, yPoints, zPoints
 
+        print(points)
+
         return points
+    
