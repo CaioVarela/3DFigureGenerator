@@ -3,12 +3,11 @@ import services.pipeService as pipeService
 import models.circumference as circumference
 
 class Pipe:
-    def pipe(raio, pc, p=1, hasBottom=False):
+    def pipe(raio, h, pc, p=1, hasBottom=False):
         x = []
         y = []
         z = []
 
-        h = 2*raio  
         cont = 0
 
         circ = circumference.Circumference.circumference(raio, pc)

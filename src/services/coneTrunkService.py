@@ -1,12 +1,13 @@
 import pandas as pd
 from models import coneTrunk
 from services.transformations import translationService
+from services.transformations import scaleService
 
 class ConeTrunkService:
-    def connectConeTrunk(quad1, quad2, pc = [0, 0, 0], up = 0, down = 0):
+    def connectTrunk(element1, element2, pc = [0, 0, 0], up = 0, down = 0):
 
-        df1 = pd.DataFrame({"x": quad1[0], "y":quad1[1], "z":quad1[2]})
-        df2 = pd.DataFrame({"x": quad2[0], "y":quad2[1], "z":quad2[2]})
+        df1 = pd.DataFrame({"x": element1[0], "y":element1[1], "z":element1[2]})
+        df2 = pd.DataFrame({"x": element2[0], "y":element2[1], "z":element2[2]})
 
         troX = []
         troY = []
@@ -57,11 +58,13 @@ class ConeTrunkService:
     
         return troX, troY, troZ
     
-    def add_coneTrunk(points, isCentralized=True):
-        x, y, z = coneTrunk.ConeTrunk.coneTrunk(5, 3, 2, [0, 0, 0], 1/5)
+    def add_coneTrunk(points, isCentralized=True, rb=2.5, rs=1.5, h=2, pc=[0, 0, 0], p=1/5):
+        x, y, z = coneTrunk.ConeTrunk.coneTrunk(rb, rs, h, pc, p)
 
         if (isCentralized == False):
-            points = translationService.TranslationService.translation(-5, -5, -10, [x, y, z])
+            points = translationService.TranslationService.translation(-10, -5, -5, [x, y, z])
+            points = scaleService.ScaleService.scale(1/2, 1/2, 1/2, points)
+
             return points
         else: 
             return [x, y, z]

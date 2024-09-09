@@ -4,14 +4,13 @@ import services.boxService as boxService
 import numpy as np
 
 class Box:
-    def box(l, pc, p=1):
+    def box(l, h, pc, p=1):
 
         x = []
         y = []
         z = []
 
         cont = 0
-        h = l
 
         while cont < h:
             
@@ -20,7 +19,7 @@ class Box:
             quad2 = square.Square.square(l, [pc[0], pc[1], pc[2] + cont])
 
             if cont == p:
-                tronco = coneTrunkService.ConeTrunkService.connectConeTrunk(quad1, quad2, pc=pc, down=1)
+                tronco = coneTrunkService.ConeTrunkService.connectTrunk(quad1, quad2, pc=pc, down=1)
                 x += tronco[0]
                 y += tronco[1]
                 z += tronco[2]

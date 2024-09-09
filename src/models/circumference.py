@@ -1,4 +1,3 @@
-import services.transformations.rotationService as rotate
 import numpy as np
 
 class Circumference:

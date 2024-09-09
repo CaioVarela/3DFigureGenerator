@@ -56,8 +56,8 @@ class BoxService:
     
         return troX, troY, troZ
     
-    def add_box(points, isCentralized=True):
-        x, y, z = box.Box.box(2, [0, 0, 0], 1/5)
+    def add_box(points, isCentralized=True, l=2, h=2, pc=[0, 0, 0], p=1/5):
+        x, y, z = box.Box.box(l, h, pc, p)
 
         if (isCentralized == False):
             points = translationService.TranslationService.translation(5, -5, 5, [x, y, z])
