@@ -39,7 +39,7 @@ class CamService:
         points.append(cup)
         points.append(coneTrunk)
 
-        c = np.array([1, 1, -1])
+        c = np.array([1, -1, -1])
         pm = np.mean(CamService.pontoMedio(points), axis=0)
         pm = list(pm)
         del(pm[3])

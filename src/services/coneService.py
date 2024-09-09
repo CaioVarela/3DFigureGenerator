@@ -41,8 +41,8 @@ class ConeService:
     
         return cnX, cnY, cnZ
     
-    def add_cone(points, isCentralized=True):
-        x, y, z = cone.Cone.cone(2, 3*2, [0, 0, 0])
+    def add_cone(points, isCentralized=True, raio=2, h=6, pc=[0, 0, 0]):
+        x, y, z = cone.Cone.cone(raio, h, pc)
         
         if (isCentralized == False):
             points = translationService.TranslationService.translation(2, 4, 0, [x, y, z])

@@ -45,8 +45,8 @@ class PipeService:
     
         return clX, clY, clZ
     
-    def add_pipe(points, isCentralized=True):
-            x, y, z = pipe.Pipe.pipe(2, [0, 0, 0], p=1/5)
+    def add_pipe(points, isCentralized=True, raio=2, h=4, pc=[0, 0, 0], p=1/5):
+            x, y, z = pipe.Pipe.pipe(raio, h, pc, p)
             
             if (isCentralized == False):
                 points = translationService.TranslationService.translation(6, 4, 4, [x, y, z])
